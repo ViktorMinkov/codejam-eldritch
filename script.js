@@ -5,9 +5,9 @@ import * as Cards from './data/mythicCards/index.js'
 console.log(ancientsData)
 console.log(Cards)
 
-const ancientsContainer = document.querySelector('.ancients__container')
+// const ancientsContainer = document.querySelector('.ancients__container')
 const difficultyContainer = document.querySelector('.difficulty__container')
-const ancientsItem = document.querySelector('.ancients__item')
+// const ancientsItem = document.querySelector('.ancients__item')
 const difficulty = document.querySelectorAll('.difficulty')
 const greenСircles = document.querySelectorAll('.green')
 const brownСircles = document.querySelectorAll('.brown')
@@ -59,9 +59,54 @@ window.addEventListener('click',(event) => {
       cardsBlock.classList.add('visible')
       shuffleButton.classList.remove('visible')
 
-    }
-    // if()
-    // if(event.target.classList.contains('active')) {
-    //   console.log('sdas')
-    // }
+    } 
 })
+
+
+//Full algorithm
+//sum all card from stage of Ancient
+function sumAncientCards(firstStage,secondStage,thirdStage) {
+  let sum = {};
+
+  Object.keys(firstStage).forEach(key => {      
+      sum[key] = firstStage[key] + secondStage[key] + thirdStage[key]     
+  })   
+  return sum;
+}
+
+console.log(ancientsData[0].firstStage.greenCards)
+//Full deck from Ancient requirements
+let fullPlayingDeck = []
+function getFullCards (array) {   
+  let numberOfCards = sumAncientCards(ancientsData[0].firstStage,ancientsData[0].secondStage,ancientsData[0].thirdStage)
+  console.log(numberOfCards)
+  let result = []
+  for (let i = 0; i < numberOfCards.greenCards;i++) {   
+    let num = array[0].length;
+    let removedCard = array[0].splice(getRandomNum(num),1)    
+    result.push(...removedCard)  
+  }
+  for (let i = 0; i < numberOfCards.brownCards;i++) {
+    let num = array[1].length;
+    let removedCard = array[1].splice(getRandomNum(num),1)    
+    result.push(...removedCard)   
+  }
+  for (let i = 0; i < numberOfCards.blueCards;i++) {
+    let num = array[2].length;
+    let removedCard = array[2].splice(getRandomNum(num),1)    
+    result.push(...removedCard) 
+  }
+  return result
+}
+fullPlayingDeck = getFullCards(fullDeck)
+
+console.log(fullDeck)
+console.log(fullPlayingDeck)
+//get 3 deck from FullDeck
+const greenDeck = fullPlayingDeck.filter(el => el.color === 'green')
+const brownDeck = fullPlayingDeck.filter(el => el.color === 'brown')
+const blueDeck = fullPlayingDeck.filter(el => el.color === 'blue')
+
+console.log(greenDeck)
+console.log(brownDeck)
+console.log(blueDeck)
