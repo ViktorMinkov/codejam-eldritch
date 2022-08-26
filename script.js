@@ -76,7 +76,7 @@ function sumAncientCards(firstStage,secondStage,thirdStage) {
 
 console.log(ancientsData[0].firstStage.greenCards)
 //Full deck from Ancient requirements
-let fullPlayingDeck = []
+
 function getFullCards (array) {   
   let numberOfCards = sumAncientCards(ancientsData[0].firstStage,ancientsData[0].secondStage,ancientsData[0].thirdStage)
   console.log(numberOfCards)
@@ -96,9 +96,9 @@ function getFullCards (array) {
     let removedCard = array[2].splice(getRandomNum(num),1)    
     result.push(...removedCard) 
   }
-  return result
+  return result;
 }
-fullPlayingDeck = getFullCards(fullDeck)
+ const fullPlayingDeck = getFullCards(fullDeck)
 
 console.log(fullDeck)
 console.log(fullPlayingDeck)
@@ -110,3 +110,39 @@ const blueDeck = fullPlayingDeck.filter(el => el.color === 'blue')
 console.log(greenDeck)
 console.log(brownDeck)
 console.log(blueDeck)
+
+let firstStageDeck =[]
+let secondStageDeck = []
+let thirdStageDeck = []
+
+function filterCardsForStages (obj) {
+  let result = [] 
+  for (let i =0; i< obj.greenCards;i++) {
+    let num = greenDeck.length;
+    let removedCard = greenDeck.splice(getRandomNum(num),1)
+    result.push(...removedCard)
+  }
+  for (let i =0; i< obj.blueCards;i++) {
+    let num = blueDeck.length;
+    let removedCard = blueDeck.splice(getRandomNum(num),1)
+    result.push(...removedCard)    
+  } 
+  for (let i =0; i< obj.brownCards;i++) {
+    let num = brownDeck.length;
+    let removedCard = brownDeck.splice(getRandomNum(num),1)
+    result.push(...removedCard)    
+    
+  }
+  return result;
+}
+console.log(ancientsData[0].firstStage.greenCards)
+firstStageDeck = filterCardsForStages(ancientsData[0].firstStage)
+secondStageDeck = filterCardsForStages(ancientsData[0].secondStage)
+thirdStageDeck = filterCardsForStages(ancientsData[0].thirdStage)
+// console.log(firstStageDeck)
+// console.log(secondStageDeck)
+// console.log(thirdStageDeck)
+
+shuffle(firstStageDeck)
+shuffle(secondStageDeck)
+shuffle(thirdStageDeck)
