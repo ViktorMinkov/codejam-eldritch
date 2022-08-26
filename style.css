@@ -3,3 +3,166 @@
     padding: 0;
     box-sizing: border-box;
 }
+html,
+body {
+ width: 100%;
+}
+.wrapper {
+  background-image: url("./assets/home.png"); 
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+}
+.ancients__container {
+  width: 40%;
+  height: 100%;
+
+  display: flex;    
+  justify-content: center;
+    
+   
+}
+.ancients__item {   
+    height: 100%;
+    width: 280px;
+    background-image: url('./assets/Ancients/Azathoth.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+.ancients__item {
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+}
+.ancients__item.active {
+    border: 2px solid red;
+}
+
+.difficulty__container {
+    width: 20%;
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    gap: 20px;    
+    /* visibility: hidden;
+    opacity: 0; */
+    transition: all 0.5s ease-in;
+}
+.difficulty__container.visible{
+  visibility: visible;
+  opacity: 1;
+}
+.difficulty {
+  max-height: 50px;
+  width: 250px;
+  padding: 15px;
+  font-size: 18px;
+  text-align: center;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.difficulty.active {
+    border: 1px solid black;    
+  
+}
+
+.game-area__container {
+    width: 40%;
+    display: flex;    
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+    font-size: 20px;
+    color: white;
+}
+.stage-stats {
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in;  
+}
+.stage-stats.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.stage__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  
+}
+.stats__item {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.stage-title {
+  margin-bottom: 10px;
+
+}
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.green {
+  background-color: green;  
+}
+.brown {
+  background-color: brown;
+}
+.blue {
+  background-color: blue;
+}
+.shuffle-button {
+  height: 50px;
+  width: 300px;
+  background-color: transparent;
+  border: 1px solid white;
+  align-self: center;
+  padding: 10px 0;
+  text-align: center;
+  border-radius: 5px;
+}
+.cards-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in;  
+}
+.cards-area.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.deck {
+  width: 180px;
+  height: 265px;
+  background-image: url('./assets/mythicCardBackground.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;  
+}
+.last-card {
+    width: 180px;
+    height: 265px;
+}
+
+
+
