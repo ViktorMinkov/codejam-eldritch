@@ -25,23 +25,25 @@ body {
 
   display: flex;    
   justify-content: center;
+  align-items: center;
     
    
 }
-.ancients__item {   
-    height: 100%;
-    width: 280px;
+.ancients__item {    
     background-image: url('./assets/Ancients/Azathoth.png');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-}
-.ancients__item {
+    height: 360px;
+    width: 280px;
     transition: all 0.3s ease-in;
     cursor: pointer;
+    border: 2px solid white;
+    border-radius: 10px;
 }
+
 .ancients__item.active {
-    border: 2px solid red;
+    border-color: blueviolet;
 }
 
 .difficulty__container {
@@ -50,8 +52,8 @@ body {
     flex-direction: column;    
     align-items: center;
     gap: 20px;    
-    /* visibility: hidden;
-    opacity: 0; */
+    visibility: hidden;
+    opacity: 0;
     transition: all 0.5s ease-in;
 }
 .difficulty__container.visible{
@@ -70,7 +72,7 @@ body {
   cursor: pointer;
 }
 .difficulty.active {
-    border: 1px solid black;    
+    background-color: blueviolet;   
   
 }
 
@@ -131,12 +133,23 @@ body {
 .shuffle-button {
   height: 50px;
   width: 300px;
-  background-color: transparent;
-  border: 1px solid white;
-  align-self: center;
   padding: 10px 0;
-  text-align: center;
+  border: 1px solid white;
   border-radius: 5px;
+  align-self: center;  
+  text-align: center;
+  
+  cursor: pointer;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in;
+}
+
+.shuffle-button.visible {
+  visibility: visible;
+  opacity: 1;
+
 }
 .cards-area {
   display: flex;
@@ -151,17 +164,22 @@ body {
   visibility: visible;
   opacity: 1;
 }
-.deck {
-  width: 180px;
-  height: 265px;
+.deck { 
   background-image: url('./assets/mythicCardBackground.png');
   background-repeat: no-repeat;
   background-size: contain;
+  width: 180px;
+  height: 265px;
+  border: 2px solid white;
+  border-radius: 10px;
   cursor: pointer;  
 }
 .last-card {
     width: 180px;
     height: 265px;
+    border: 2px solid white;
+    border-radius: 10px;
+    cursor: pointer; 
 }
 
 
