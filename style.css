@@ -26,11 +26,11 @@ body {
   display: flex;    
   justify-content: center;
   align-items: center;
-    
+  flex-wrap: wrap;
+  gap: 10px; 
    
 }
-.ancients__item {    
-    background-image: url('./assets/Ancients/Azathoth.png');
+.ancients__item{
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -41,9 +41,21 @@ body {
     border: 2px solid white;
     border-radius: 10px;
 }
+#azathoth {
+  background-image: url('./assets/Ancients/Azathoth.png');
+}
+#cthulhu {
+  background-image: url('./assets/Ancients/Cthulthu.png');
+}
+#iogSothoth {
+  background-image: url('./assets/Ancients/IogSothoth.png');
+}
+#shubNiggurath {
+  background-image: url('./assets/Ancients/ShubNiggurath.png');
+}
 
 .ancients__item.active {
-    border-color: blueviolet;
+    border-color: darkred;
 }
 
 .difficulty__container {
@@ -72,7 +84,7 @@ body {
   cursor: pointer;
 }
 .difficulty.active {
-    background-color: blueviolet;   
+    background-color: darkred;   
   
 }
 
