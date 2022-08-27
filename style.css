@@ -172,14 +172,23 @@ body {
   height: 265px;
   border: 2px solid white;
   border-radius: 10px;
-  cursor: pointer;  
+  cursor: pointer;
+ 
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  color: white;
 }
 .last-card {
     width: 180px;
     height: 265px;
     border: 2px solid white;
-    border-radius: 10px;
-    cursor: pointer; 
+    border-radius: 10px;       
+}
+.last-card.blackout {
+  opacity: 0.3;
 }
 
 
