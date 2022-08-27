@@ -1,0 +1,207 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,
+body {
+ width: 100%;
+}
+.wrapper {
+  background-image: url("./assets/home.png"); 
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+}
+.ancients__container {
+  width: 40%;
+  height: 100%;
+
+  display: flex;    
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px; 
+   
+}
+.ancients__item{
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    height: 360px;
+    width: 280px;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+#azathoth {
+  background-image: url('./assets/Ancients/Azathoth.png');
+}
+#cthulhu {
+  background-image: url('./assets/Ancients/Cthulthu.png');
+}
+#iogSothoth {
+  background-image: url('./assets/Ancients/IogSothoth.png');
+}
+#shubNiggurath {
+  background-image: url('./assets/Ancients/ShubNiggurath.png');
+}
+
+.ancients__item.active {
+    border-color: darkred;
+}
+
+.difficulty__container {
+    width: 20%;
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
+    gap: 20px;    
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.5s ease-in;
+}
+.difficulty__container.visible{
+  visibility: visible;
+  opacity: 1;
+}
+.difficulty {
+  max-height: 50px;
+  width: 250px;
+  padding: 15px;
+  font-size: 18px;
+  text-align: center;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.difficulty.active {
+    background-color: darkred;   
+  
+}
+
+.game-area__container {
+    width: 40%;
+    display: flex;    
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 50px;
+    font-size: 20px;
+    color: white;
+}
+.stage-stats {
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in;  
+}
+.stage-stats.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.stage__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  
+}
+.stats__item {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.stage-title {
+  margin-bottom: 10px;
+
+}
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.green {
+  background-color: green;  
+}
+.brown {
+  background-color: brown;
+}
+.blue {
+  background-color: blue;
+}
+.shuffle-button {
+  height: 50px;
+  width: 300px;
+  padding: 10px 0;
+  border: 1px solid white;
+  border-radius: 5px;
+  align-self: center;  
+  text-align: center;
+  
+  cursor: pointer;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in;
+}
+
+.shuffle-button.visible {
+  visibility: visible;
+  opacity: 1;
+
+}
+.cards-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s ease-in;  
+}
+.cards-area.visible {
+  visibility: visible;
+  opacity: 1;
+}
+.deck { 
+  background-image: url('./assets/mythicCardBackground.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 180px;
+  height: 265px;
+  border: 2px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+ 
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  color: white;
+}
+.last-card {
+    width: 180px;
+    height: 265px;
+    border: 2px solid white;
+    border-radius: 10px;       
+}
+.last-card.blackout {
+  opacity: 0.3;
+}
+
+
+
