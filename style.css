@@ -66,7 +66,7 @@ body {
     gap: 20px;    
     visibility: hidden;
     opacity: 0;
-    transition: all 0.5s ease-in;
+    transition: all 0.3s ease-in;
 }
 .difficulty__container.visible{
   visibility: visible;
@@ -102,7 +102,7 @@ body {
   flex-direction: column;
   visibility: hidden;
   opacity: 0;
-  transition: all 0.5s ease-in;  
+  transition: all 0.3s ease-in;  
 }
 .stage-stats.visible {
   visibility: visible;
@@ -155,7 +155,7 @@ body {
 
   visibility: hidden;
   opacity: 0;
-  transition: all 0.5s ease-in;
+  transition: all 0.3s ease-in;
 }
 
 .shuffle-button.visible {
@@ -170,7 +170,7 @@ body {
   gap: 40px;
   visibility: hidden;
   opacity: 0;
-  transition: all 0.5s ease-in;  
+  transition: all 0.3s ease-in;  
 }
 .cards-area.visible {
   visibility: visible;
