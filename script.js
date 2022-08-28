@@ -2,7 +2,6 @@ import difficulties from './data/difficulties.js'
 import ancientsData from './data/ancients.js'
 import * as Cards from './data/mythicCards/index.js'
 // console.log(difficulties)
-console.log(ancientsData)
 console.log(Cards)
 
 const ancientsContainer = document.querySelector('.ancients__container')
@@ -30,20 +29,18 @@ const ancientsDataCopy = []
 ancientsData.forEach(el => ancientsDataCopy.push(el))
 console.log(ancientsDataCopy)
 //сделать функцию,чтобы при кликее на древнего он считывал его айди и возвращал нажатого древнего
-let matrix = [
-  [0,0,0],
-  [0,0,0],
-  [0,0,0]
- ]
- let fullCards =[]
+
+ let fullCards = []
+ let difficultyFilteredFullCards = []
+ let numberOfCards = []
  let fullPlayingCards = []
  let filteredCardsByColor =[]
  let firstStageDeck = []
  let secondStageDeck = []
  let thirdStageDeck = []
  let chosenAncient = []
- const finalDeck = []
- 
+ let stageCards = []
+ const finalDeck = [] 
 
 
 //random number
@@ -56,8 +53,6 @@ function shuffle(array) {
   return array;  
 }
 
-const ancientsStagesArray = ancientsDataCopy.forEach((el) => { 
-   })
 
 function chooseAncient (event) {
   let result = '';
@@ -72,9 +67,22 @@ function chooseAncient (event) {
   }
   if(event.target.id ==='shubNiggurath') {
     result = ancientsDataCopy[3]
-  }
-  // console.log(result)
+  }  
   return result;
+}
+//Выбор сложности
+function filterByDifficulty(array,event) {
+  let result = [];  
+  if(event.target.id === 'easy') {
+    result = array.map((el) => el.filter(card => card.difficulty !== 'hard'))
+  }
+  if(event.target.id === 'normal') {
+    result = array    
+  }
+  if(event.target.id === 'hard') {
+    result = array.map((el) => el.filter(card => card.difficulty !== 'easy'))
+  }  
+   return result;
 }
 
 
@@ -100,7 +108,6 @@ function getArrayByColors (array) {
   }
 //нужное кол-во карт по условиям древнего
   function getCardsForDeck (array) {   
-    let numberOfCards = sumCardsForAncient(chosenAncient.firstStage,chosenAncient.secondStage,chosenAncient.thirdStage)//!додумать смену древнего
     console.log(numberOfCards)
     let result = []
     for (let i = 0; i < numberOfCards.greenCards;i++) {   
@@ -147,21 +154,25 @@ function filterCardsForStages (obj) {
     }
     return result;
   }
-  console.log(ancientsData[0].firstStage) 
+  
 
-//Выкладка карт из колоды
-function getCardfromDeck () {
+//Pull cards from final deck
+function pullCardFromDeck () {
   let index = 0;
   if(index < finalDeck.length){
     let removedCard = finalDeck.pop()    
     lastCard.style.backgroundImage = `url(${removedCard.cardFace})`
-    index ++;    
+    index ++;
+    console.log(removedCard)
+   
   }
   if(finalDeck.length === 0) {
     lastCard.classList.add('blackout')
-  }
+  }  
 }
-deck.addEventListener('click',getCardfromDeck)//Добавить привент дефолт наверное для того что бы не выделяллся при клике текст синим 
+deck.addEventListener('click',pullCardFromDeck)
+
+
 
  //Listeners for blocks
  ancientsContainer.addEventListener('click',(event) => {
@@ -170,19 +181,20 @@ deck.addEventListener('click',getCardfromDeck)//Добавить привент 
     event.target.classList.add('active')     
     difficultyContainer.classList.add('visible')   
     statsBlock.classList.remove('visible')
-    cardsBlock.classList.remove('visible')
-    
+    cardsBlock.classList.remove('visible')   
 
-    console.log(event.target)
     chosenAncient = chooseAncient(event)
+    stageCards =[chosenAncient.firstStage,chosenAncient.secondStage,chosenAncient.thirdStage]
+    console.log(stageCards)
+  
+    stageCards.forEach((el,index) => {  
+    greenСircles[index].textContent = el.greenCards
+    blueСircles[index].textContent = el.blueCards
+    brownСircles[index].textContent = el.brownCards
+  })
+    
   }
 })
-//  ancientsItem.addEventListener('click',() => {
-//   ancientsItem.classList.add('active') 
-//   difficultyContainer.classList.add('visible')
-//   console.log(event.target)
-//   chosenAncient = chooseAncient()
-// })
 
 
 difficultyContainer.addEventListener('click', (event) => {
@@ -192,12 +204,17 @@ difficultyContainer.addEventListener('click', (event) => {
     shuffleButton.classList.add('visible')
     statsBlock.classList.remove('visible')
     cardsBlock.classList.remove('visible')
-   
+    
     //при клике на сложность формирую 3 колоды по цветам
     fullCards = getArrayByColors(cardsArray)
+    //убрать карты по условиям сложности из fullСards
+    difficultyFilteredFullCards = filterByDifficulty(fullCards,event)
+    numberOfCards = sumCardsForAncient(chosenAncient.firstStage,chosenAncient.secondStage,chosenAncient.thirdStage)
     console.log(fullCards)
+    console.log(difficultyFilteredFullCards)
     console.log(chosenAncient)
-}   
+    
+  }   
 })
 
 shuffleButton.addEventListener('click',() => {
@@ -207,10 +224,9 @@ shuffleButton.addEventListener('click',() => {
   lastCard.classList.remove('blackout')
 
 
-  fullPlayingCards = getCardsForDeck(fullCards)
-  // console.log(fullPlayingCards)
-  filteredCardsByColor = filterCardsByColor(fullPlayingCards)
-  // console.log(filteredCardsByColor)
+  fullPlayingCards = getCardsForDeck(difficultyFilteredFullCards)
+  
+  filteredCardsByColor = filterCardsByColor(fullPlayingCards)  
   firstStageDeck = shuffle(filterCardsForStages(chosenAncient.firstStage))
   secondStageDeck = shuffle(filterCardsForStages(chosenAncient.secondStage))
   thirdStageDeck = shuffle(filterCardsForStages(chosenAncient.thirdStage))
@@ -219,3 +235,4 @@ shuffleButton.addEventListener('click',() => {
   finalDeck.push(...thirdStageDeck,...secondStageDeck,...firstStageDeck)
   console.log(finalDeck)
 })
+
