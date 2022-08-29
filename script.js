@@ -183,10 +183,9 @@ ancientsContainer.addEventListener("click", (event) => {
       chosenAncient.secondStage,
       chosenAncient.thirdStage,
     ];
-    
+  
     console.log(stageCards);
-    
-
+  
     stageCards.forEach((el, index) => {
       greenСircles[index].textContent = el.greenCards;      
       blueСircles[index].textContent = el.blueCards;
@@ -215,6 +214,11 @@ difficultyContainer.addEventListener("click", (event) => {
     console.log(fullCards);
     console.log(difficultyFilteredFullCards);
     console.log(chosenAncient);
+    stageCards.forEach((el, index) => {
+      greenСircles[index].textContent = el.greenCards;      
+      blueСircles[index].textContent = el.blueCards;
+      brownСircles[index].textContent = el.brownCards;
+    });
   }
 });
 
