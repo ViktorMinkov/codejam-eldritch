@@ -24,13 +24,9 @@ const cardsArray = new Array(
   ...Cards.brownCards,
   ...Cards.blueCards
 );
-// const allCardsBlue = cardsArray.filter(card => card.color==='blue')
-// const allCardsGreen = cardsArray.filter(card => card.color==='green')
-// const allCardsBrown = cardsArray.filter(card => card.color==='brown')
-// const fullCards = [allCardsGreen,allCardsBrown,allCardsBlue]
 //Копия свойств древних
-const ancientsDataCopy = [];
-ancientsData.forEach((el) => ancientsDataCopy.push(el));
+const ancientsDataCopy = [...ancientsData];
+
 console.log(ancientsDataCopy);
 
 let fullCards = [];
@@ -154,12 +150,11 @@ function filterCardsForStages(obj) {
   return result;
 }
 
-// // Tracker
+// Tracker
 // function tracker() {
 //   let index = 0;
-//   if(greenСircles[index].textContent === '0' && blueСircles[index].textContent === '0' && brownСircles[index].textContent === '0') {
-//     index++;
-//     console.log(`work ${greenСircles[index].textContent == 0}`)
+//   while (greenСircles[index].textContent === '0' && blueСircles[index].textContent === '0' && brownСircles[index].textContent === '0') {
+//     index++;    
 //     console.log(greenСircles[index].textContent)
 //   }
 //   if (removedCard.color === "green") {
@@ -192,10 +187,12 @@ ancientsContainer.addEventListener("click", (event) => {
       chosenAncient.secondStage,
       chosenAncient.thirdStage,
     ];
+    
     console.log(stageCards);
+    
 
     stageCards.forEach((el, index) => {
-      greenСircles[index].textContent = el.greenCards;
+      greenСircles[index].textContent = el.greenCards;      
       blueСircles[index].textContent = el.blueCards;
       brownСircles[index].textContent = el.brownCards;
     });
@@ -230,6 +227,7 @@ shuffleButton.addEventListener("click", () => {
   cardsBlock.classList.add("visible");
   shuffleButton.classList.remove("visible");
   lastCard.classList.remove("blackout");
+  lastCard.style.backgroundImage = `url()`
 
   fullPlayingCards = getCardsForDeck(difficultyFilteredFullCards);
 
@@ -252,7 +250,7 @@ function pullCardFromDeck() {
     lastCard.style.backgroundImage = `url(${removedCard.cardFace})`;
     index++;
     // console.log(removedCard);
-    // tracker();    
+    // tracker();
   }
   if (finalDeck.length === 0) {
     lastCard.classList.add("blackout");
