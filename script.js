@@ -151,26 +151,22 @@ function filterCardsForStages(obj) {
 }
 
 // Tracker
-// function tracker() {
-//   let index = 0;
-//   while (greenСircles[index].textContent === '0' && blueСircles[index].textContent === '0' && brownСircles[index].textContent === '0') {
-//     index++;    
-//     console.log(greenСircles[index].textContent)
-//   }
-//   if (removedCard.color === "green") {
-//     stageCards[index].greenCards--;   
-//     greenСircles[index].textContent = stageCards[index].greenCards;
-//   }
-//   if (removedCard.color === "blue") {
-//     stageCards[index].blueCards--;
-//     blueСircles[index].textContent = stageCards[index].blueCards;
-//   }
-//   if (removedCard.color === "brown") {
-//     stageCards[index].brownCards--;
-//     brownСircles[index].textContent = stageCards[index].brownCards;
-//   } 
-//   console.log(index);
-// }
+function tracker() {
+  let index = 0;
+  while (greenСircles[index].textContent === '0' && blueСircles[index].textContent === '0' && brownСircles[index].textContent === '0') {
+    index++;    
+    console.log(greenСircles[index].textContent)
+  }
+  if (removedCard.color === "green") {      
+    greenСircles[index].textContent = Number(greenСircles[index].textContent) - 1;
+  }
+  if (removedCard.color === "blue") {    
+    blueСircles[index].textContent = Number(blueСircles[index].textContent) - 1;
+  }
+  if (removedCard.color === "brown") {    
+    brownСircles[index].textContent = Number(brownСircles[index].textContent) - 1;
+  }   
+}
 
 //Listeners for blocks
 ancientsContainer.addEventListener("click", (event) => {
@@ -187,10 +183,9 @@ ancientsContainer.addEventListener("click", (event) => {
       chosenAncient.secondStage,
       chosenAncient.thirdStage,
     ];
-    
+  
     console.log(stageCards);
-    
-
+  
     stageCards.forEach((el, index) => {
       greenСircles[index].textContent = el.greenCards;      
       blueСircles[index].textContent = el.blueCards;
@@ -219,6 +214,11 @@ difficultyContainer.addEventListener("click", (event) => {
     console.log(fullCards);
     console.log(difficultyFilteredFullCards);
     console.log(chosenAncient);
+    stageCards.forEach((el, index) => {
+      greenСircles[index].textContent = el.greenCards;      
+      blueСircles[index].textContent = el.blueCards;
+      brownСircles[index].textContent = el.brownCards;
+    });
   }
 });
 
@@ -250,7 +250,7 @@ function pullCardFromDeck() {
     lastCard.style.backgroundImage = `url(${removedCard.cardFace})`;
     index++;
     // console.log(removedCard);
-    // tracker();
+    tracker();
   }
   if (finalDeck.length === 0) {
     lastCard.classList.add("blackout");
